@@ -1,0 +1,202 @@
+diff --git a/node_modules/commonmark/dist/commonmark.js b/node_modules/commonmark/dist/commonmark.js
+index 5820bdb..4e0c8e4 100644
+--- a/node_modules/commonmark/dist/commonmark.js
++++ b/node_modules/commonmark/dist/commonmark.js
+@@ -8607,7 +8607,7 @@
+     };
+ 
+     // Attempt to parse an at mention
+-    var reAtMention = /^@([a-z0-9._-]*)/i;
++    var reAtMention = XRegExp("^@([\\w\\p{Hiragana}\\p{Katakana}\\p{Han}._-]*)", "i");
+     var parseAtMention = function(block) {
+         if (this.brackets) {
+             // Don't perform autolinking while inside an explicit link
+@@ -8924,29 +8924,29 @@
+             case C_NEWLINE:
+                 res = this.parseNewline(block);
+                 break;
+-            case C_BACKSLASH$1:
+-                res = this.parseBackslash(block);
+-                break;
+-            case C_BACKTICK:
+-                res = this.parseBackticks(block);
+-                break;
+-            case C_ASTERISK:
+-            case C_UNDERSCORE:
+-                res = this.handleDelim(c, block);
+-                break;
+-            case C_SINGLEQUOTE:
+-            case C_DOUBLEQUOTE:
+-                res = this.options.smart && this.handleDelim(c, block);
+-                break;
+-            case C_OPEN_BRACKET:
+-                res = this.parseOpenBracket(block);
+-                break;
+-            case C_BANG:
+-                res = this.parseBang(block);
+-                break;
+-            case C_CLOSE_BRACKET:
+-                res = this.parseCloseBracket(block);
+-                break;
++            // case C_BACKSLASH$1:
++            //     res = this.parseBackslash(block);
++            //     break;
++            // case C_BACKTICK:
++            //     res = this.parseBackticks(block);
++            //     break;
++            // case C_ASTERISK:
++            // case C_UNDERSCORE:
++            //     res = this.handleDelim(c, block);
++            //     break;
++            // case C_SINGLEQUOTE:
++            // case C_DOUBLEQUOTE:
++            //     res = this.options.smart && this.handleDelim(c, block);
++            //     break;
++            // case C_OPEN_BRACKET:
++            //     res = this.parseOpenBracket(block);
++            //     break;
++            // case C_BANG:
++            //     res = this.parseBang(block);
++            //     break;
++            // case C_CLOSE_BRACKET:
++            //     res = this.parseCloseBracket(block);
++            //     break;
+             case C_LESSTHAN:
+                 res = this.parseAutolink(block) || this.parseHtmlTag(block) || this.parseEmoticon(block);
+                 break;
+@@ -8956,9 +8956,9 @@
+             case C_AT_SIGN:
+                 res = this.parseAtMention(block);
+                 break;
+-            case C_TILDE:
+-                res = this.handleDelim(c, block);
+-                break;
++            // case C_TILDE:
++            //     res = this.handleDelim(c, block);
++            //     break;
+             case C_COLON:
+                 res = this.parseEmoji(block) || this.parseEmoticon(block);
+                 break;
+@@ -8969,8 +8969,8 @@
+             case C_LOWER_X:
+                 res = this.parseEmoticon(block);
+                 break;
+-            case C_NUMBER_SIGN:
+-                res = this.parseHashtag(block);
++            // case C_NUMBER_SIGN:
++            //     res = this.parseHashtag(block);
+         }
+ 
+         if (!res) {
+@@ -10253,7 +10253,7 @@
+         return {
+             doc: new Document(),
+             blocks: blocks,
+-            blockStarts: blockStarts,
++            blockStarts: [],
+             tip: this.doc,
+             oldtip: this.doc,
+             currentLine: "",
+diff --git a/node_modules/commonmark/lib/blocks.js b/node_modules/commonmark/lib/blocks.js
+index 6fed272..fc0a23c 100644
+--- a/node_modules/commonmark/lib/blocks.js
++++ b/node_modules/commonmark/lib/blocks.js
+@@ -1209,7 +1209,7 @@ function Parser(options) {
+     return {
+         doc: new Document(),
+         blocks: blocks,
+-        blockStarts: blockStarts,
++        blockStarts: [],
+         tip: this.doc,
+         oldtip: this.doc,
+         currentLine: "",
+diff --git a/node_modules/commonmark/lib/inlines.js b/node_modules/commonmark/lib/inlines.js
+index b786d08..d035b70 100644
+--- a/node_modules/commonmark/lib/inlines.js
++++ b/node_modules/commonmark/lib/inlines.js
+@@ -879,7 +879,7 @@ var parseUrl = function(block) {
+ }
+ 
+ // Attempt to parse an at mention
+-var reAtMention = /^@([a-z0-9._-]*)/i;
++var reAtMention = XRegExp("^@([\\w\\p{Hiragana}\\p{Katakana}\\p{Han}._-]*)", "i");
+ var parseAtMention = function(block) {
+     if (this.brackets) {
+         // Don't perform autolinking while inside an explicit link
+@@ -1196,29 +1196,29 @@ var parseInline = function(block) {
+         case C_NEWLINE:
+             res = this.parseNewline(block);
+             break;
+-        case C_BACKSLASH:
+-            res = this.parseBackslash(block);
+-            break;
+-        case C_BACKTICK:
+-            res = this.parseBackticks(block);
+-            break;
+-        case C_ASTERISK:
+-        case C_UNDERSCORE:
+-            res = this.handleDelim(c, block);
+-            break;
+-        case C_SINGLEQUOTE:
+-        case C_DOUBLEQUOTE:
+-            res = this.options.smart && this.handleDelim(c, block);
+-            break;
+-        case C_OPEN_BRACKET:
+-            res = this.parseOpenBracket(block);
+-            break;
+-        case C_BANG:
+-            res = this.parseBang(block);
+-            break;
+-        case C_CLOSE_BRACKET:
+-            res = this.parseCloseBracket(block);
+-            break;
++        // case C_BACKSLASH:
++        //     res = this.parseBackslash(block);
++        //     break;
++        // case C_BACKTICK:
++        //     res = this.parseBackticks(block);
++        //     break;
++        // case C_ASTERISK:
++        // case C_UNDERSCORE:
++        //     res = this.handleDelim(c, block);
++        //     break;
++        // case C_SINGLEQUOTE:
++        // case C_DOUBLEQUOTE:
++        //     res = this.options.smart && this.handleDelim(c, block);
++        //     break;
++        // case C_OPEN_BRACKET:
++        //     res = this.parseOpenBracket(block);
++        //     break;
++        // case C_BANG:
++        //     res = this.parseBang(block);
++        //     break;
++        // case C_CLOSE_BRACKET:
++        //     res = this.parseCloseBracket(block);
++        //     break;
+         case C_LESSTHAN:
+             res = this.parseAutolink(block) || this.parseHtmlTag(block) || this.parseEmoticon(block);
+             break;
+@@ -1228,9 +1228,9 @@ var parseInline = function(block) {
+         case C_AT_SIGN:
+             res = this.parseAtMention(block);
+             break;
+-        case C_TILDE:
+-            res = this.handleDelim(c, block);
+-            break;
++        // case C_TILDE:
++        //     res = this.handleDelim(c, block);
++        //     break;
+         case C_COLON:
+             res = this.parseEmoji(block) || this.parseEmoticon(block);
+             break;
+@@ -1241,8 +1241,8 @@ var parseInline = function(block) {
+         case C_LOWER_X:
+             res = this.parseEmoticon(block);
+             break;
+-        case C_NUMBER_SIGN:
+-            res = this.parseHashtag(block);
++        // case C_NUMBER_SIGN:
++        //     res = this.parseHashtag(block);
+         default:
+             break;
+     }

@@ -1,0 +1,1 @@
+export const PHOTO_EDITOR_HIDDEN_CONTROLS = ['save', 'share'];

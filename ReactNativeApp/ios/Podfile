@@ -1,0 +1,124 @@
+platform :ios, '11.0'
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
+
+def all_pods
+  config = use_native_modules!
+  use_unimodules!
+  use_react_native!(:path => config["reactNativePath"])
+  use_flipper!({ 'Flipper-Folly' => '2.3.0' })
+end
+
+target 'AirlexChat' do
+  # force use our own JitsiMeetSDK
+  pod 'JitsiMeetSDK', :git => 'https://github.com/RocketChat/jitsi-meet-ios-sdk-releases.git'
+
+  all_pods
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
+  pod 'Permission-Calendars', :path => "#{permissions_path}/Calendars"
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+  pod 'Permission-Contacts', :path => "#{permissions_path}/Contacts"
+  pod 'Permission-FaceID', :path => "#{permissions_path}/FaceID"
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
+  pod 'Permission-Motion', :path => "#{permissions_path}/Motion"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'Permission-Reminders', :path => "#{permissions_path}/Reminders"
+  pod 'Permission-Siri', :path => "#{permissions_path}/Siri"
+  pod 'Permission-SpeechRecognition', :path => "#{permissions_path}/SpeechRecognition"
+  pod 'Permission-StoreKit', :path => "#{permissions_path}/StoreKit"
+
+  pod 'RNPhotoEditor', :path => '../node_modules/react-native-photo-editor/ios'
+  pod 'iOSPhotoEditor', :git => 'https://github.com/prscX/photo-editor', :branch => 'master'
+  pod 'RNApplePay', :path => '../node_modules/react-native-apay'
+  pod 'react-native-ffmpeg/min-lts', :path => '../node_modules/react-native-ffmpeg'
+
+end
+
+target 'ShareAirlexChat' do
+  all_pods
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
+  pod 'Permission-Calendars', :path => "#{permissions_path}/Calendars"
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+  pod 'Permission-Contacts', :path => "#{permissions_path}/Contacts"
+  pod 'Permission-FaceID', :path => "#{permissions_path}/FaceID"
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
+  pod 'Permission-Motion', :path => "#{permissions_path}/Motion"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'Permission-Reminders', :path => "#{permissions_path}/Reminders"
+  pod 'Permission-Siri', :path => "#{permissions_path}/Siri"
+  pod 'Permission-SpeechRecognition', :path => "#{permissions_path}/SpeechRecognition"
+  pod 'Permission-StoreKit', :path => "#{permissions_path}/StoreKit"
+end
+
+# used to get user credentials
+target 'NotificationService' do
+  all_pods
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral"
+  pod 'Permission-Calendars', :path => "#{permissions_path}/Calendars"
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+  pod 'Permission-Contacts', :path => "#{permissions_path}/Contacts"
+  pod 'Permission-FaceID', :path => "#{permissions_path}/FaceID"
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
+  pod 'Permission-Motion', :path => "#{permissions_path}/Motion"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'Permission-Reminders', :path => "#{permissions_path}/Reminders"
+  pod 'Permission-Siri', :path => "#{permissions_path}/Siri"
+  pod 'Permission-SpeechRecognition', :path => "#{permissions_path}/SpeechRecognition"
+  pod 'Permission-StoreKit', :path => "#{permissions_path}/StoreKit"
+end
+
+
+# Define find-and-replace function
+def find_and_replace(dir, findstr, replacestr)
+  Dir[dir].each do |name|
+    text = File.read(name)
+    replace = text.gsub(findstr,replacestr)
+    replaced = text.index(replacestr)
+    if replaced == nil && text != replace
+      puts "Fix: " + name
+      File.chmod(0775, name)
+      File.open(name, "w") { |file| file.puts replace }
+      STDOUT.flush
+    end
+  end
+  Dir[dir + '*/'].each(&method(:find_and_replace))
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
+    end
+    if target.name.include?('iOSPhotoEditor')
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '5'
+      end
+    end
+  end
+  
+  # fix for Flipper-Folly on IOS 14.5
+  find_and_replace("Pods/Flipper-Folly/folly/synchronization/DistributedMutex-inl.h", "atomic_notify_one(state)", "folly::atomic_notify_one(state)")
+  find_and_replace("Pods/Flipper-Folly/folly/synchronization/DistributedMutex-inl.h", "atomic_wait_until(&state, previous | data, deadline)", "folly::atomic_wait_until(&state, previous | data, deadline)")
+end

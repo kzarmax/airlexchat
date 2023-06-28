@@ -1,0 +1,20 @@
+<template name="welcome">
+	<div style="padding:24px">
+		<h1 style="margin-top: 16px;margin-bottom: 16px;font-size: 24px;">{{_ "Welcome_to_Site"}}</h1>
+		<div style="font-size: 20px;">
+			<div>{{_ "Verify_Complete_Body"}}</div>
+			<div><a id="app_link" href="">エアレペルソナ</a>のアプリケーションのログイン画面より、ログインしてください。</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var link_url='';
+		// if iPod / iPhone, display install app prompt
+		if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+			link_url = 'airlexchat://';
+		} else if ( navigator.userAgent.match(/android/i)) {
+			link_url = "intent://verify-email/#Intent;scheme=airlexchat;end";
+		}
+
+        document.getElementById('app_link').setAttribute('href', link_url);
+	</script>
+</template>

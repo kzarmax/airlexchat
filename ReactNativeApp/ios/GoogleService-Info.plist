@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>371744169842-mi3cn9j2opgqe2o6lql6sojolfgk3vr6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.371744169842-mi3cn9j2opgqe2o6lql6sojolfgk3vr6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDu7Uu-miugON39NqpJ1HB8DSgrLeCOSFo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>371744169842</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jp.airlex.chat</string>
+	<key>PROJECT_ID</key>
+	<string>master-legacy-235109</string>
+	<key>STORAGE_BUCKET</key>
+	<string>master-legacy-235109.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:371744169842:ios:881773fb491f7abe3547eb</string>
+	<key>DATABASE_URL</key>
+	<string>https://master-legacy-235109.firebaseio.com</string>
+</dict>
+</plist>

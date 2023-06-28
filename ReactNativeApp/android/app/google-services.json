@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "371744169842",
+    "firebase_url": "https://master-legacy-235109.firebaseio.com",
+    "project_id": "master-legacy-235109",
+    "storage_bucket": "master-legacy-235109.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371744169842:android:a966c3f707685ba8",
+        "android_client_info": {
+          "package_name": "chat.airlex.reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371744169842-69r1t1ci7553dnsvrars5k322gl21n88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy0u66G7RS5aSQUK3B2TQIa0hKUoiBQ5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371744169842-vmi6urv7fneqt0mi9h5s7h2470tiuchj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371744169842-gsm1opl9bgd160k1d7uh56sadjl96fl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.funkit.airlex.chat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
