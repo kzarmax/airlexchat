@@ -1,45 +1,30 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# AirlexChat (エアレペルソナ) forked from [RocketChat](https://github.com/RocketChat)
+Social chat system of [Airlex.K.K](https://airlex.co.jp)
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+- **Supported iOS versions**: 12+
+- **Supported Android versions**: 6.0+
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+## Server and Webpages
+The server was built with Meteor. As a database, used MongoDB.
+Built the web pages with Reactjs.
 
----
+### Main functionalities
+- Admin-dashboard pages.
+- User-web pages.
+- Backend endpoints for mobile app and web pages.
+## ReactNative mobile app
+Built with Reactnative. 
 
-## Edit a file
+### functionalities
+- Social auth
+- Matching friends by QR code
+- DirectChat, GroupChat, Video/Audio call by Jitsi meet, emoji, p2p encryption, multi-language,
+- Push notification and Shared extention.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-
----
-
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+## Screenshots
+![AirlexChat (1)](https://github.com/kjeih/airlexchat/assets/56865797/b4648906-185c-4520-ac2f-c60d158424a1)
+![AirlexChat (2)](https://github.com/kjeih/airlexchat/assets/56865797/ea88a4af-ebe6-4511-88fd-ae9e8bc50a58)
+![AirlexChat (3)](https://github.com/kjeih/airlexchat/assets/56865797/0096c4a0-d4b6-4b24-8795-953bdf1279c2)
+![AirlexChat (4)](https://github.com/kjeih/airlexchat/assets/56865797/5e3ca04b-0625-4a3d-9166-a0a5f64d017a)
+![AirlexChat (5)](https://github.com/kjeih/airlexchat/assets/56865797/03ca190b-c7eb-44a8-9b86-491e7c486d86)
+![AirlexChat (6)](https://github.com/kjeih/airlexchat/assets/56865797/10abd3fd-0f8a-4204-8ede-43dc10f84c7c)
